@@ -50,7 +50,7 @@ fi
 
 # Удаление контейнеров проекта
 print_status "Удаление контейнеров проекта..."
-if docker ps -a --filter "name=lpw_04" -q | grep -q .; then
+if docker ps -a --filter "name=Lab_4_analytical-dashboard" -q | grep -q .; then
     docker rm -f $(docker ps -a --filter "name=lpw_04" -q) 2>/dev/null || true
     print_success "Контейнеры проекта удалены"
 else
