@@ -114,7 +114,7 @@
 ### Подключение к базе данных
 
 1. Откройте Superset: http://localhost:8088
-2. Перейдите к подключениям: ⚙️ Settings -> Data
+2. Перейдите к подключениям: Settings -> Data
 3. Добавьте базу данных: Нажмите + Create Dataset
 4. Заполните форму "Connect a database":
 
@@ -126,4 +126,48 @@
 | Username | analytics | Из переменной POSTGRES_USER=analytics |
 | Password | analytics | Из переменной POSTGRES_PASSWORD=analytics |
 | Display Name | Analytics DB | Удобное имя для подключения |
+
+
+## Структура проекта
+
+```
+lpw_04/
+├── dags/
+│   ├── airbnb_open_data_dag.py     # DAG для варианта 16
+│   └── datamart_variant_16.sql     # SQL для витрины данных
+├── docker-compose.yml              # Конфигурация инфраструктуры
+├── Dockerfile                      # Кастомный образ Airflow
+├── requirements.txt                # Python зависимости
+├── kaggle.json                     # Kaggle API ключ
+├── setup_kaggle.sh                 # Настройка Kaggle API
+├── cleanup.sh                      # Очистка окружения
+└── README.md                       # Документация
+```
+
+## Структура данных
+
+### Таблица stg_airbnb
+Основная таблица с обогащенными данными о президентах США:
+
+```sql
+CREATE TABLE stg_airbnb (
+        neighbourhood_group TEXT,
+        room_type TEXT,
+        price DECIMAL(10,2),
+        number_of_reviews DECIMAL(10,2),
+        availability_365 DECIMAL(10,2)
+    );
+```
+
+| Поле | Тип | Описание |
+|---|---|---|
+|neighbourhood_group| TEXT | Тип квартала |
+| room_type | TEXT | тип комнаты |
+| price  | DECIMAL(10,2) | цена |
+| number_of_reviews | DECIMAL(10,2) | количество просмотров |
+| availability_365 | DECIMAL(10,2) | срок аренды|
+
+
+### Представление airbnb_datamart
+VIEW на основе таблицы stg_airbnb для аналитики.
 
