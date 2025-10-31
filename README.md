@@ -148,7 +148,9 @@ lpw_04/
 
 ### Таблица stg_airbnb
 Основная таблица с обогащенными данными о президентах США:
-
+```sql
+DROP TABLE IF EXISTS stg_airbnb CASCADE;
+```
 ```sql
 CREATE TABLE stg_airbnb (
         neighbourhood_group TEXT,
@@ -170,4 +172,20 @@ CREATE TABLE stg_airbnb (
 
 ### Представление airbnb_datamart
 VIEW на основе таблицы stg_airbnb для аналитики.
+```sql
+DROP VIEW IF EXISTS airbnb_datamart;
+
+CREATE VIEW airbnb_datamart AS
+SELECT 
+    neighbourhood_group,
+    room_type,
+    price,
+    number_of_reviews,
+    availability_365
+FROM 
+    stg_airbnb
+WHERE
+    -- Фильтруем данные, которые могут быть некорректными
+   price > 0 ;
+```
 
