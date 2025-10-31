@@ -40,3 +40,10 @@
 ![image](./img/schema.png)
 
 
+### ETL-процесс
+
+![image](./img/Conveyor.png)
+
+![image](./img/conveer.jpg) 
+
+
