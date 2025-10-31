@@ -198,8 +198,17 @@ WHERE
 
 ![image](./img/Gantt.png)
 
-### Графики в Superset
+### Примеры графиков в Superset
+#### Столбчатый
+![image](./img/Bar_chart.png)
+#### Круговая диаграмма
+![image](./img/Pie_chart.png)
+#### Столбчатый, на основе результата SQL запроса
+![image](./img/SQL_query_bar_chart.png)
 
-![image](./img/Bar chart.png)
+### Dashboard
 
+![image](./img/airbnb_dashboard.jpg)
 
+### Dashboard c добавленным фильтром
+![image](./img/Dashboard_filtered.png)
