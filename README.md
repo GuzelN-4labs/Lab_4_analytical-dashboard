@@ -188,4 +188,18 @@ WHERE
     -- Фильтруем данные, которые могут быть некорректными
    price > 0 ;
 ```
+### Создание связи с Postrgres в Airflow
+
+![image](./img/Airflow_Postgres_connection.png)
+
+### Отработка DAG в Airflow
+
+![image](./img/Graph.png)
+
+![image](./img/Gantt.png)
+
+### Графики в Superset
+
+![image](./img/Bar chart.png)
+
 
