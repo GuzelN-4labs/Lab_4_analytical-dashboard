@@ -20,12 +20,27 @@
 
 **Исходные данные**
 
-*   **Kaggle Dataset**. `harshitagpt/us-presidents` — исторические данные о президентах США
-*   **Поля**. S.No., start, end, president, prior, party, vice
+*   **Kaggle Dataset**. `arianazmoudeh/airbnbopendata` — исторические данные о стоимости аренды Airbnb
+*   **Поля**. 'neighbourhood_group', 'room_type', 'price', 'number_of_reviews', 'availability_365'
 
-
-**Ожидаемый результат.** Интерактивный дашборд с визуализацией ключевых метрик президентства.
+**Ожидаемый результат.** Интерактивный дашборд с визуализацией ключевых метрик
+**Визуалы:** 
+* Индикатор. Средняя price.
+* Столбчатая. Средняя price по neighbourhood_group.
+* Круговая. Доли по room_type.
+* Комбинированная. Средняя price (столбцы) и number_of_reviews (линия) по neighbourhood_group.
+* Линейная. Зависимость price от availability_365.
+* Сводная таблица
+* Интерактивные фильтры по room_type, neighbourhood_group
 
 ## Подробная архитектура решения
 
 ### Общая схема системы
+
+
+
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Kaggle    │───▶│   Airflow   │───▶│ PostgreSQL │──▶│  Superset   │
+│   Dataset   │    │   Extract   │    │   Load      │    │ Visualize   │
+│             │    │   Transform │    │   Transform │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
